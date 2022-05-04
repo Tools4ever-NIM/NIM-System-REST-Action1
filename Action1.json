@@ -1,0 +1,116 @@
+{
+    "schema": {
+        "options": {},
+        "crud_objects": {
+            "organizations":{
+                "operations":{
+                    "organizationsList":{
+                        "method":"get",
+                        "call": {
+                            "mode":"normal",
+                            "path": "/organizations",
+                            "post_processing": "child_tables"
+                        },
+                        "processing_options": {
+                            "output_field": "items"
+                        },
+                        "query_parameters": {
+                        }
+                    }
+                },
+                "parameters":{},
+                "key":"id",
+                "resources":{
+                    "id": "number*",
+                    "type": "string*",
+                    "self": "string*",
+                    "name": "string*",
+                    "description": "string*",
+                    "access": "string*"
+                }
+            },
+            "endpoints":{
+                "operations":{
+                    "endpointsList":{
+                        "method": "get",
+                        "call": {
+                            "mode": "iteration",
+                            "table": "organizations",
+                            "iterator": "id",
+                            "path": "/endpoints/managed/{iterator}?fields=*",
+                            "base": {
+                                "organization_id": "{iterator}"
+                            }
+                        },
+                        "processing_options": {
+                            "output_field": "items"
+                        },
+                        "query_parameters": {
+                                
+                        },
+                        "maxSessionCount": 20
+                    }
+                },
+                "parameters":{},
+                "key":"id",
+                "resources":{
+                    "OS": "string*",
+                    "address": "string*",
+                    "agent_install_date": "string*",
+                    "agent_version": "string*",
+                    "external_address": "string*",
+                    "id": "string*",
+                    "last_seen": "string*",
+                    "name": "string*",
+                    "platform": "string*",
+                    "self": "string*",
+                    "status": "string*",
+                    "subscription_status": "string*",
+                    "type": "string*",
+                    "user": "string*",
+                    "comment": "string*",
+                    "missing_critical_updates": "string*",
+                    "missing_other_updates": "string*"
+                }
+            }
+        }
+		
+	},
+    "rest": {
+        "config": {
+            "baseUrl": "{tenant_id}",
+            "get": {
+                "maxPageCount": 5,
+                "query_parameters": {
+                },
+                "pagination":{
+                    "mode":"generic",
+                    "path":[],
+                    "params":{
+                        "page":"{page_number}",
+                        "pagesize":"{page_size}"
+                    }
+                }
+            },
+            "authentication": "client_credentials",
+            "call_handling": "generic",
+            "test_connection": {
+                "url": "/organizations"
+            }
+        },
+        "authOptions": {
+            "authUrl": "{tenant_id}/oauth2/token",
+            "directToken":true
+        }
+    },
+    "connection":{
+        "items": [
+            {
+                "name": "page_size",
+                "type": "textbox",
+                "label": "Page Size:",
+                "value": "100"
+            }
+        ]
+    }
+}
