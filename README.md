@@ -1,11 +1,12 @@
-# NIM-System-REST-Action1
+# Action1
 
-## Current Available Data
+## Data Tables
 - Organizations
 - Endpoints
 
-## Setup Authentication
+## Actions
+N/A
 
-- Configure API Permissions (https://www.action1.com/api-documentation/api-credentials/)
-- Configure NIM Tenant URL (https://app.action1.com/api/3.0)
+# NIM Docs
+The official NIM documentation can be found at: https://docs.nimsuite.com
 
