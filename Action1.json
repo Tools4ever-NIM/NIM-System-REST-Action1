@@ -78,7 +78,7 @@
 	},
     "rest": {
         "config": {
-            "baseUrl": "{tenant_id}",
+            "baseUrl": "https://{tenant_id}/api/3.0",
             "get": {
                 "maxPageCount": 5,
                 "query_parameters": {
@@ -99,7 +99,7 @@
             }
         },
         "authOptions": {
-            "authUrl": "{tenant_id}/oauth2/token",
+            "authUrl": "https://{tenant_id}/api/3.0/oauth2/token",
             "directToken":true
         }
     },
